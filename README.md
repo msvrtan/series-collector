@@ -24,4 +24,4 @@ Puppet
   - "rar"
 
 * submodules:
-
+  - puppi
