@@ -22,6 +22,7 @@ Puppet
   - "joe"
   - "xz-utils"
   - "rar"
+  - "curl"
 
 * submodules:
   - puppi
