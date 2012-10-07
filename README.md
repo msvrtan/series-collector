@@ -1,9 +1,9 @@
-vagrant-base
+vagrant-lamp
 ============
 
-Base vagrant repo
+LAMP vagrant repo
 ---
-Base box based on precise64 with puppet enabled. Parts of config have been taken from https://github.com/dirkaholic/vagrant-php-dev-box repo.
+LAMP box based on https://github.com/msvrtan/vagrant-base settings.
 
 Information
 ---
