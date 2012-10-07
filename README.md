@@ -1,13 +1,15 @@
 vagrant-base
 ============
 
-Base vagrant repo - Ubuntu 12.04 server 64-bit (Precise Pangolin)
+Base vagrant repo
 ---
 Base box based on precise64 with puppet enabled. Parts of config have been taken from https://github.com/dirkaholic/vagrant-php-dev-box repo.
 
-
-
-Last system update on :2012-10-07
+Information
+---
+Version:  0.1 
+OS:       Ubuntu 12.04 server 64-bit (Precise Pangolin)
+Date:     2012-10-07
 
 
 Puppet
@@ -20,3 +22,6 @@ Puppet
   - "joe"
   - "xz-utils"
   - "rar"
+
+* submodules:
+
