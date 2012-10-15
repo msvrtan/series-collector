@@ -10,36 +10,62 @@ include 'App/FormattedEpisodeFile.class.php';
 include 'App/FormattedSeasonFolder.class.php';
 
 
+class Worker
+{
+    protected $objSourceFolder;
+    protected $objTargetFolder;
+
+    public function __construct($objSourceFolder, $objTargetFolder)
+    {
+        $this->objSourceFolder = $objSourceFolder;
+        $this->objTargetFolder = $objTargetFolder;
+
+    }
+
+    protected function getFileList()
+    {
+        $objFolderReader = new FolderReader($this->objSourceFolder);
+
+        return $objFolderReader->getFileList();
+    }
+
+    public function test()
+    {
+        foreach ($this->getFileList() as $objFile) {
+
+            $decorator                = new Decorator($objFile);
+            $objEpisodeFile           = $decorator->getObjEpisodeFile();
+            $objFormattedEpisodeFile  = new FormattedEpisodeFile($objEpisodeFile);
+            $objFormattedSeasonFolder = new FormattedSeasonFolder($objEpisodeFile, $this->objTargetFolder);
+            var_dump($objFormattedSeasonFolder->getSeriesFolder());
+            var_dump($objFormattedSeasonFolder->getSeasonFolder());
+
+            if (file_exists($objFormattedSeasonFolder->getSeriesFolder()) === false) {
+
+                //mkdir($objFormattedSeasonFolder->getSeriesFolder());
+                mkdir($objFormattedSeasonFolder->getSeriesFolder(), 777);
+                chmod($objFormattedSeasonFolder->getSeriesFolder(), 777);
+            }
+            if (file_exists($objFormattedSeasonFolder->getSeasonFolder()) === false) {
+                //mkdir($objFormattedSeasonFolder->getSeasonFolder());
+                mkdir($objFormattedSeasonFolder->getSeasonFolder(), 777);
+                chmod($objFormattedSeasonFolder->getSeasonFolder(), 777);
+
+            }
+        }
+
+    }
+}
+
 echo '<pre>';
 $sourcePath = '/vagrant/serije/';
 $targetPath = '/vagrant/serije/new/';
 
 $objSourceFolder = new Folder($sourcePath);
 $objTargetFolder = new Folder($targetPath);
-$objFolderReader = new FolderReader($objSourceFolder);
-$arr             = $objFolderReader->getFileList();
 
-$objFile = $arr[0];
-
-var_dump($objFile);
-
-$decorator = new Decorator($objFile);
-
-//var_dump($decorator);
-
-$objEpisodeFile = $decorator->getObjEpisodeFile();
-
-//var_dump($objEpisodeFile);
-
-$objFormattedEpisodeFile = new FormattedEpisodeFile($objEpisodeFile);
-
-var_dump($objFormattedEpisodeFile->get());
-
-$objFormattedSeasonFolder = new FormattedSeasonFolder($objEpisodeFile, $objTargetFolder);
-
-var_dump($objFormattedSeasonFolder->getSeriesFolder());
-var_dump($objFormattedSeasonFolder->getSeasonFolder());
-
+$z = new Worker($objSourceFolder, $objTargetFolder);
+$z->test();
 
 
 /*

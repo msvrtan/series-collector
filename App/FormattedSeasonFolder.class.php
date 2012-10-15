@@ -20,7 +20,6 @@ class FormattedSeasonFolder
         $arr = array(
             $this->objTargetFolder->getFolderPath(),
             $this->getSeriesName(),
-            DIRECTORY_SEPARATOR
         );
         $str = implode('', $arr);
 
@@ -32,10 +31,10 @@ class FormattedSeasonFolder
         $str = '';
         $arr = array(
             $this->getSeriesFolder(),
+            DIRECTORY_SEPARATOR,
             $this->getSeriesName(),
             '-',
             $this->getSeasonString(),
-            DIRECTORY_SEPARATOR
         );
         $str = implode('', $arr);
 
