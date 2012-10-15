@@ -77,8 +77,14 @@ class Worker
 }
 
 echo '<pre>';
+
+$sourcePath = '/media/mcnulty/#series/spremi/';
+$targetPath = '/media/mcnulty/#series/sorted/';
+
 $sourcePath = '/media/bunk/#series/spremi/';
 $targetPath = '/media/bunk/collection/#series-sorted/';
+
+
 
 $objSourceFolder = new Folder($sourcePath);
 $objTargetFolder = new Folder($targetPath);
