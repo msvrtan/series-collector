@@ -1,12 +1,12 @@
 <?php
 
-class File
+class Folder
 {
-    protected  $filePath;
+    protected  $folderPath;
     
-    public function __construct($filePath)
+    public function __construct($folderPath)
     {
-        $this->filePath = $filePath;
+        $this->folderPath = $folderPath;
     }
 }
 
