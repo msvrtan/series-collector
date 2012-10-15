@@ -30,7 +30,7 @@ class FolderReader
     }
 }
 
-$folderPath = '/home/msvrtan/Desktop/serije/season 3/';
+echo '<pre>';
 $folderPath = '/vagrant/serije/';
 
 
@@ -38,7 +38,15 @@ $objFolder       = new Folder($folderPath);
 $objFolderReader = new FolderReader($objFolder);
 $arr             = $objFolderReader->getFileList();
 
-var_dump($arr);
+//var_dump($arr);
+
+$objFile = $arr[0];
+
+var_dump($objFile);
+
+
+
+
 
 /*
 
