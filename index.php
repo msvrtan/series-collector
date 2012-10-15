@@ -47,13 +47,13 @@ class Worker
                 if (file_exists($objFormattedSeasonFolder->getSeriesFolder()) === false) {
 
                     //mkdir($objFormattedSeasonFolder->getSeriesFolder());
-                    mkdir($objFormattedSeasonFolder->getSeriesFolder(), 777);
-                    chmod($objFormattedSeasonFolder->getSeriesFolder(), 777);
+                    mkdir($objFormattedSeasonFolder->getSeriesFolder(), 0777);
+                    chmod($objFormattedSeasonFolder->getSeriesFolder(), 0777);
                 }
                 if (file_exists($objFormattedSeasonFolder->getSeasonFolder()) === false) {
                     //mkdir($objFormattedSeasonFolder->getSeasonFolder());
-                    mkdir($objFormattedSeasonFolder->getSeasonFolder(), 777);
-                    chmod($objFormattedSeasonFolder->getSeasonFolder(), 777);
+                    mkdir($objFormattedSeasonFolder->getSeasonFolder(), 0777);
+                    chmod($objFormattedSeasonFolder->getSeasonFolder(), 0777);
 
                 }
 
@@ -77,8 +77,8 @@ class Worker
 }
 
 echo '<pre>';
-$sourcePath = '/vagrant/serije/';
-$targetPath = '/vagrant/serije/new/';
+$sourcePath = '/media/bunk/#series/spremi/';
+$targetPath = '/media/bunk/#series/sorted/';
 
 $objSourceFolder = new Folder($sourcePath);
 $objTargetFolder = new Folder($targetPath);
