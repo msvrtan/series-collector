@@ -25,6 +25,10 @@ class File
 
     }
 
+    public function getFilePath()
+    {
+        return $this->filePath;
+    }
     public function getFileName()
     {
         return $this->fileName;
