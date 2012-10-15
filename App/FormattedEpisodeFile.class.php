@@ -32,7 +32,7 @@ class FormattedEpisodeFile
     protected function getSeriesName()
     {
         $string = ucwords($this->objEpisodeFile->getSeriesName());
-        $string = str_replace( ' ' , $this->separator , $string);
+        $string = str_replace(' ', $this->separator, $string);
 
         return $string;
 

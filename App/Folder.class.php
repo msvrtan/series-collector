@@ -2,7 +2,7 @@
 
 class Folder
 {
-    protected  $folderPath;
+    protected $folderPath;
 
     public function __construct($folderPath)
     {
