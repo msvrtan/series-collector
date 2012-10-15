@@ -20,7 +20,8 @@ class FolderReader
 
         foreach ($iterator as $fileinfo) {
             if ($fileinfo->isFile()) {
-                $arrFileList[] = $fileinfo->getFilename();
+                $arrFileList[] = new File($fileinfo->getPathname());
+                //$arrFileList[] = $fileinfo;
             }
         }
 
