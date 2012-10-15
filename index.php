@@ -11,17 +11,17 @@ include 'App/FormattedSeasonFolder.class.php';
 
 
 echo '<pre>';
-$folderPath = '/vagrant/serije/';
+$sourcePath = '/vagrant/serije/';
 $targetPath = '/vagrant/serije/new/';
 
-$objFolder       = new Folder($folderPath);
+$objSourceFolder = new Folder($sourcePath);
 $objTargetFolder = new Folder($targetPath);
-$objFolderReader = new FolderReader($objFolder);
+$objFolderReader = new FolderReader($objSourceFolder);
 $arr             = $objFolderReader->getFileList();
 
 $objFile = $arr[0];
 
-//var_dump($objFile);
+var_dump($objFile);
 
 $decorator = new Decorator($objFile);
 
