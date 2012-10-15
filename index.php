@@ -7,13 +7,15 @@ include 'App/File.class.php';
 include 'App/EpisodeFile.class.php';
 include 'App/Decorator.class.php';
 include 'App/FormattedEpisodeFile.class.php';
+include 'App/FormattedSeasonFolder.class.php';
 
 
 echo '<pre>';
 $folderPath = '/vagrant/serije/';
-
+$targetPath = '/vagrant/serije/new/';
 
 $objFolder       = new Folder($folderPath);
+$objTargetFolder = new Folder($targetPath);
 $objFolderReader = new FolderReader($objFolder);
 $arr             = $objFolderReader->getFileList();
 
@@ -32,6 +34,11 @@ $objEpisodeFile = $decorator->getObjEpisodeFile();
 $objFormattedEpisodeFile = new FormattedEpisodeFile($objEpisodeFile);
 
 var_dump($objFormattedEpisodeFile->get());
+
+$objFormattedSeasonFolder = new FormattedSeasonFolder($objEpisodeFile , $objTargetFolder);
+
+var_dump($objFormattedSeasonFolder->getSeriesFolder());
+var_dump($objFormattedSeasonFolder->getSeasonFolder());
 
 
 
