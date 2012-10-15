@@ -1,7 +1,7 @@
-vagrant-lamp
-============
+series-collector
+================
 
-LAMP vagrant repo
+App for cleaning up series filenames and setting up locations
 ---
 LAMP box based on https://github.com/msvrtan/vagrant-base settings.
 
