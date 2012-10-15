@@ -33,6 +33,9 @@ class Worker
     {
         foreach ($this->getFileList() as $objFile) {
 
+            try
+            {
+
             $decorator                = new Decorator($objFile);
             $objEpisodeFile           = $decorator->getObjEpisodeFile();
             $objFormattedEpisodeFile  = new FormattedEpisodeFile($objEpisodeFile);
@@ -52,6 +55,11 @@ class Worker
                 chmod($objFormattedSeasonFolder->getSeasonFolder(), 777);
 
             }
+            }catch (Exception $e)
+            {
+                echo $e->getMessage();
+            }
+
         }
 
     }
