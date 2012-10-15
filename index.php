@@ -35,7 +35,7 @@ $objFormattedEpisodeFile = new FormattedEpisodeFile($objEpisodeFile);
 
 var_dump($objFormattedEpisodeFile->get());
 
-$objFormattedSeasonFolder = new FormattedSeasonFolder($objEpisodeFile , $objTargetFolder);
+$objFormattedSeasonFolder = new FormattedSeasonFolder($objEpisodeFile, $objTargetFolder);
 
 var_dump($objFormattedSeasonFolder->getSeriesFolder());
 var_dump($objFormattedSeasonFolder->getSeasonFolder());
