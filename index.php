@@ -18,16 +18,8 @@ $objFile = $arr[0];
 
 //var_dump($objFile);
 
-class Decorator
+class EpisodeFile
 {
-    protected $objFile;
-
-    public function __construct($objFile)
-    {
-        $this->objFile = $objFile;
-
-        $this->doWork();
-    }
 
     protected $seriesName;
     protected $seasonNumber;
@@ -35,14 +27,81 @@ class Decorator
     protected $extra;
     protected $fileType;
 
+    public function setEpisodeNumber($episodeNumber)
+    {
+        $this->episodeNumber = $episodeNumber;
+    }
+
+    public function getEpisodeNumber()
+    {
+        return $this->episodeNumber;
+    }
+
+    public function setExtra($extra)
+    {
+        $this->extra = $extra;
+    }
+
+    public function getExtra()
+    {
+        return $this->extra;
+    }
+
+    public function setFileType($fileType)
+    {
+        $this->fileType = $fileType;
+    }
+
+    public function getFileType()
+    {
+        return $this->fileType;
+    }
+
+    public function setSeasonNumber($seasonNumber)
+    {
+        $this->seasonNumber = $seasonNumber;
+    }
+
+    public function getSeasonNumber()
+    {
+        return $this->seasonNumber;
+    }
+
+    public function setSeriesName($seriesName)
+    {
+        $this->seriesName = $seriesName;
+    }
+
+    public function getSeriesName()
+    {
+        return $this->seriesName;
+    }
+
+
+}
+
+class Decorator
+{
+    protected $objFile;
+    protected $objEpisodeFile;
+
+    public function __construct($objFile)
+    {
+        $this->objFile        = $objFile;
+        $this->objEpisodeFile = new EpisodeFile();
+
+        $this->doWork();
+    }
+
+
     public function doWork()
     {
         $fileName = $this->objFile->getFileName();
         $fileName = strtolower($fileName);
         $fileName = str_replace('.', ' ', $fileName);
 
-        echo $fileName;
-        echo '<br>';
+        //echo $fileName;
+        //echo '<br>';
 
         $arrRegex = array(
             '(?<seriesName>.*)',
@@ -53,18 +112,18 @@ class Decorator
 
         $regex = '|^' . implode(' ', $arrRegex) . '$|';
 
-        echo $regex;
-        echo '<br>';
+        //echo $regex;
+        //echo '<br>';
 
         if (preg_match($regex, $fileName, $arr)) {
 
-            $this->seriesName    = $arr['seriesName'];
-            $this->seasonNumber  = $arr['seasonNumber'];
-            $this->episodeNumber = $arr['episodeNumber'];
-            $this->extra         = $arr['extra'];
-            $this->fileType      = $arr['fileType'];
+            $this->objEpisodeFile->setSeriesName($arr['seriesName']);
+            $this->objEpisodeFile->setSeasonNumber($arr['seasonNumber']);
+            $this->objEpisodeFile->setEpisodeNumber($arr['episodeNumber']);
+            $this->objEpisodeFile->setExtra($arr['extra']);
+            $this->objEpisodeFile->setFileType($arr['fileType']);
 
-            var_dump($arr);
+            //var_dump($arr);
 
         } else {
             throw new Exception('preg failed' . $fileName);
