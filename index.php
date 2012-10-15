@@ -6,6 +6,8 @@ include 'App/FolderReader.class.php';
 include 'App/File.class.php';
 include 'App/EpisodeFile.class.php';
 include 'App/Decorator.class.php';
+include 'App/FormattedEpisodeFile.class.php';
+
 
 echo '<pre>';
 $folderPath = '/vagrant/serije/';
@@ -19,17 +21,17 @@ $objFile = $arr[0];
 
 //var_dump($objFile);
 
-
-
 $decorator = new Decorator($objFile);
 
 //var_dump($decorator);
 
 $objEpisodeFile = $decorator->getObjEpisodeFile();
 
-var_dump($objEpisodeFile);
+//var_dump($objEpisodeFile);
 
+$objFormattedEpisodeFile = new FormattedEpisodeFile($objEpisodeFile);
 
+var_dump($objFormattedEpisodeFile->get());
 
 
 
