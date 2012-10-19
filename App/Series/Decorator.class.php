@@ -1,4 +1,5 @@
 <?php
+namespace App\Series;
 
 class Decorator
 {
@@ -20,9 +21,6 @@ class Decorator
         $fileName = strtolower($fileName);
         $fileName = str_replace('.', ' ', $fileName);
 
-        //echo $fileName;
-        //echo '<br>';
-
         $arrRegex = array(
             '(?<seriesName>.*)',
             's(?<seasonNumber>[0-9]{2})e(?<episodeNumber>[0-9]{2})',
@@ -32,8 +30,6 @@ class Decorator
 
         $regex = '|^' . implode(' ', $arrRegex) . '$|';
 
-        //echo $regex;
-        //echo '<br>';
 
         if (preg_match($regex, $fileName, $arr)) {
 
@@ -43,7 +39,6 @@ class Decorator
             $this->objEpisodeFile->setExtra($arr['extra']);
             $this->objEpisodeFile->setFileType($arr['fileType']);
 
-            //var_dump($arr);
 
         } else {
             throw new Exception('preg failed' . $fileName);

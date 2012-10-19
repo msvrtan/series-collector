@@ -1,4 +1,5 @@
 <?php
+namespace App\Series;
 
 class FormattedSeasonFolder
 {
