@@ -4,10 +4,10 @@ ini_set("display_errors", 1);
 include 'App/Folder.class.php';
 include 'App/FolderReader.class.php';
 include 'App/File.class.php';
-include 'App/EpisodeFile.class.php';
-include 'App/Decorator.class.php';
-include 'App/FormattedEpisodeFile.class.php';
-include 'App/FormattedSeasonFolder.class.php';
+include 'App/Series/EpisodeFile.class.php';
+include 'App/Series/Decorator.class.php';
+include 'App/Series/FormattedEpisodeFile.class.php';
+include 'App/Series/FormattedSeasonFolder.class.php';
 
 
 class Worker
