@@ -40,10 +40,6 @@ class Worker
                 $objFormattedEpisodeFile  = new FormattedEpisodeFile($objEpisodeFile);
                 $objFormattedSeasonFolder = new FormattedSeasonFolder($objEpisodeFile, $this->objTargetFolder);
 
-
-                //var_dump($objFormattedSeasonFolder->getSeriesFolder());
-                //var_dump($objFormattedSeasonFolder->getSeasonFolder());
-
                 if (file_exists($objFormattedSeasonFolder->getSeriesFolder()) === false) {
 
                     //mkdir($objFormattedSeasonFolder->getSeriesFolder());
@@ -81,8 +77,8 @@ echo '<pre>';
 $sourcePath = '/media/mcnulty/#series/spremi/';
 $targetPath = '/media/mcnulty/#series/sorted/';
 
-$sourcePath = '/media/bunk/#series/spremi/';
-$targetPath = '/media/bunk/collection/#series-sorted/';
+$sourcePath = '/vagrant/serije/source/';
+$targetPath = '/vagrant/serije/target/';
 
 
 
