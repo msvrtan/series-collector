@@ -15,15 +15,10 @@ class Worker
 
     }
 
-    protected function getFileList()
-    {
-
-        return $this->objSourceFolder->getFileList();
-    }
 
     public function test()
     {
-        foreach ($this->getFileList() as $objFile) {
+        foreach ($this->objSourceFolder->getFileList() as $objFile) {
 
             try {
 
