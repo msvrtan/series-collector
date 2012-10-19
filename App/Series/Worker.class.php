@@ -1,6 +1,8 @@
 <?php
 namespace App\Series;
 
+use App\System\FolderReader;
+
 class Worker
 {
     protected $objSourceFolder;
@@ -15,9 +17,8 @@ class Worker
 
     protected function getFileList()
     {
-        $objFolderReader = new FolderReader($this->objSourceFolder);
 
-        return $objFolderReader->getFileList();
+        return $this->objSourceFolder->getFileList();
     }
 
     public function test()

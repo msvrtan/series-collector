@@ -1,14 +1,14 @@
 <?php
 ini_set("display_errors", 1);
 
-include 'App/Folder.class.php';
-include 'App/FolderReader.class.php';
-include 'App/File.class.php';
+include 'App/System/Folder.class.php';
+include 'App/System/FolderReader.class.php';
+include 'App/System/File.class.php';
 include 'App/Series/EpisodeFile.class.php';
 include 'App/Series/Decorator.class.php';
 include 'App/Series/FormattedEpisodeFile.class.php';
 include 'App/Series/FormattedSeasonFolder.class.php';
-
+include 'App/Series/Worker.class.php';
 
 
 echo '<pre>';
@@ -20,11 +20,11 @@ $sourcePath = '/vagrant/serije/source/';
 $targetPath = '/vagrant/serije/target/';
 
 
+$objSourceFolder = new App\System\Folder($sourcePath);
+$objTargetFolder = new App\System\Folder($targetPath);
 
-$objSourceFolder = new Folder($sourcePath);
-$objTargetFolder = new Folder($targetPath);
 
-$z = new Worker($objSourceFolder, $objTargetFolder);
+$z = new App\Series\Worker($objSourceFolder, $objTargetFolder);
 $z->test();
 
 
