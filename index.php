@@ -2,7 +2,6 @@
 ini_set("display_errors", 1);
 
 include 'App/System/Folder.class.php';
-include 'App/System/FolderReader.class.php';
 include 'App/System/File.class.php';
 include 'App/Series/EpisodeFile.class.php';
 include 'App/Series/Decorator.class.php';
