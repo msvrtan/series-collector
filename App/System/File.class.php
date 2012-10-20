@@ -35,6 +35,11 @@ class File
     {
         return $this->fileName;
     }
+
+    public function move($objFile)
+    {
+        rename($this->getFilePath(), $objFile->getFilePath());
+    }
 }
 
 ?>

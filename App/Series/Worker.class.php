@@ -20,17 +20,31 @@ class Worker
     {
         foreach ($this->objSourceFolder->getFileList() as $objFile) {
 
-            $this->doWork($objFile);
+            $z = new miro1($objFile, $this->objTargetFolder);
+            $z->doWork();
 
         }
 
     }
 
-    protected function doWork($objFile)
+}
+
+class miro1
+{
+    protected $objFile;
+    protected $objTargetFolder;
+
+    public function __construct($objFile, $objTargetFolder)
+    {
+        $this->objFile         = $objFile;
+        $this->objTargetFolder = $objTargetFolder;
+    }
+
+    public function doWork()
     {
         try {
 
-            $decorator                = new Decorator($objFile);
+            $decorator                = new Decorator($this->objFile);
             $objEpisodeFile           = $decorator->getObjEpisodeFile();
             $objFormattedEpisodeFile  = new FormattedEpisodeFile($objEpisodeFile);
             $objFormattedSeasonFolder = new FormattedSeasonFolder($objEpisodeFile, $this->objTargetFolder);
@@ -49,13 +63,17 @@ class Worker
             }
 
 
-            $source = $objFile->getFilePath();
-            $target = $objFormattedSeasonFolder->getSeasonFolder() . $objFile->getFileName();
+            //$source = $this->objFile->getFilePath();
+            //$target = $objFormattedSeasonFolder->getSeasonFolder() . $objFile->getFileName();
 
-            echo $source . ' ' . $target;
+            $objTargetFile = new \App\System\File($objFormattedSeasonFolder->getSeasonFolder() . $this->objFile->getFileName());
+
+            $this->objFile->move($objTargetFile);
+
+            //echo $source . ' ' . $target;
             echo PHP_EOL;
 
-            rename($source, $target);
+            //rename($source, $target);
 
         } catch (Exception $e) {
             echo $e->getMessage();
