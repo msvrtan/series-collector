@@ -1,6 +1,8 @@
 <?php
 namespace App\Series;
 
+use Exception;
+
 class Decorator
 {
     protected $objFile;

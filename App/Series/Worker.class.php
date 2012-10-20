@@ -22,7 +22,6 @@ class Worker
 
             $this->doWork($objFile);
 
-
         }
 
     }
